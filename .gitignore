@@ -1,3 +1,11 @@
+/.gitignore~
+/Examples/Example1/Example1.userprefs
+/Examples/Example1/example~
+/Examples/PostExample/PostExample.html~
+/Examples/PostExample/PostExample.userprefs
+/Examples/PostExample/postexample~
+/LibCGI.userprefs
+/Examples/PostExample/PostExample/bin
 /Examples/Example1/Example1/bin
 /LibCGI/obj/Debug
 
