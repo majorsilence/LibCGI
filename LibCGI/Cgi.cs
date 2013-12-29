@@ -27,7 +27,7 @@ namespace LibCGI
             _authType = System.Environment.GetEnvironmentVariable("AUTH_TYPE");
             _remoteUser = System.Environment.GetEnvironmentVariable("REMOTE_USER");
             _remoteIdent = System.Environment.GetEnvironmentVariable("REMOTE_IDENT");
-			long.TryParse(System.Environment.GetEnvironmentVariable("CONTENT_LENGTH"), out _contentLength);
+			int.TryParse(System.Environment.GetEnvironmentVariable("CONTENT_LENGTH"), out _contentLength);
             _documentRoot = System.Environment.GetEnvironmentVariable("DOCUMENT_ROOT");
             _httpReferer = System.Environment.GetEnvironmentVariable("HTTP_REFERER");
             _httpUserAgent = System.Environment.GetEnvironmentVariable("HTTP_USER_AGENT");
@@ -36,26 +36,20 @@ namespace LibCGI
         }
 
         private string _postData = "";
-        private void RetrivePostData(long contentLength)
+        private void RetrivePostData(int contentLength)
         {
-            var data = new StringBuilder();
-            long processed = 0;
-            for (long count = 0; count < contentLength; count++ )
-            {
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey(true);
-                    data.Append(key.KeyChar);
-                    processed++;
-                }
+			byte[] data = null;
+			using (var s = Console.OpenStandardInput())
+			{
+				using (var br = new System.IO.BinaryReader(s))
+				{
+					data = new byte[contentLength];
+					br.Read(data, 0, contentLength);
 
-                if (processed != count)
-                {
-                    data.Append("Error with POST data.");
-                    break;
-                }
-            }
-            _postData = data.ToString();
+					_postData = System.Text.Encoding.Default.GetString(data, 0, contentLength);
+				}
+	
+			}
         }
         public string PostData
         {
@@ -123,11 +117,11 @@ namespace LibCGI
             }
         }
 
-        private long _contentLength;
+        private int _contentLength;
         /// <summary>
         /// Similarly, size of input data (decimal, in octets) if provided via HTTP header.
         /// </summary>
-        public long ContentLength
+        public int ContentLength
         {
             get
             {
