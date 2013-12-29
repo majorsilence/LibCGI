@@ -15,7 +15,8 @@ namespace LibCGI
             _serverSoftware = System.Environment.GetEnvironmentVariable("SERVER_SOFTWARE");
             _serverName = System.Environment.GetEnvironmentVariable("SERVER_NAME");
             _serverProtocol = System.Environment.GetEnvironmentVariable("SERVER_PROTOCOL");
-            _serverPort = int.Parse(System.Environment.GetEnvironmentVariable("SERVER_PORT"));
+			int.TryParse(System.Environment.GetEnvironmentVariable("SERVER_PORT"), out _serverPort);
+
             _requestMethod = System.Environment.GetEnvironmentVariable("REQUEST_METHOD");
             _pathInfo = System.Environment.GetEnvironmentVariable("PATH_INFO");
             _pathTranslated = System.Environment.GetEnvironmentVariable("PATH_TRANSLATED");
@@ -26,7 +27,7 @@ namespace LibCGI
             _authType = System.Environment.GetEnvironmentVariable("AUTH_TYPE");
             _remoteUser = System.Environment.GetEnvironmentVariable("REMOTE_USER");
             _remoteIdent = System.Environment.GetEnvironmentVariable("REMOTE_IDENT");
-            _contentLength = long.Parse(System.Environment.GetEnvironmentVariable("CONTENT_LENGTH"));
+			long.TryParse(System.Environment.GetEnvironmentVariable("CONTENT_LENGTH"), out _contentLength);
             _documentRoot = System.Environment.GetEnvironmentVariable("DOCUMENT_ROOT");
             _httpReferer = System.Environment.GetEnvironmentVariable("HTTP_REFERER");
             _httpUserAgent = System.Environment.GetEnvironmentVariable("HTTP_USER_AGENT");
