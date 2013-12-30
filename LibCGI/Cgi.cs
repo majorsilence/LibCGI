@@ -33,7 +33,34 @@ namespace LibCGI
             _httpUserAgent = System.Environment.GetEnvironmentVariable("HTTP_USER_AGENT");
             _httpAccept = System.Environment.GetEnvironmentVariable("HTTP_ACCEPT");
             RetrivePostData(_contentLength);
+			SetQuery(_requestMethod);
         }
+
+		private void SetQuery (string requestMethod)
+		{
+			string data;
+			if (requestMethod == "POST") {
+				data = PostData;
+			} else {
+				data = QueryString;
+			}
+			_query = new Dictionary<string, string>();
+
+			string [] values = data.Split ('&');
+			foreach (string val in values) {
+				string [] split = val.Split('=');
+				_query.Add(split[0], split[1]);
+			}
+
+		}
+
+		private Dictionary<string, string> _query;
+		public Dictionary<string, string> Query {
+			get 
+			{
+				return _query;
+			}
+		}
 
         private string _postData = "";
         private void RetrivePostData(int contentLength)

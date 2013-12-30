@@ -33,6 +33,9 @@ namespace PostExample
 				Console.WriteLine ("ServerSoftware: " + cgi.ServerSoftware + "<br>");
 
 				Console.WriteLine ("PostData: " + cgi.PostData + "<br>");
+				Console.WriteLine ("<br>");
+				Console.WriteLine ("play: " + cgi.Query["play"] + "<br>");
+				Console.WriteLine ("other: " + cgi.Query["other"] + "<br>");
 			}
 			catch (Exception ex) {
 				Console.WriteLine ("Error In CGI<br>");
