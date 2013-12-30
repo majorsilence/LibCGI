@@ -1,5 +1,7 @@
 C# cgi library.  Just for fun.
 
+Production code should use FastCGI or mod_mono.
+
 See Examples folder to see how to use this library.
 
 
