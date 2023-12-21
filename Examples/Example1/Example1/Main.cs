@@ -6,10 +6,10 @@ namespace Example1
 	{
 		public static void Main (string[] args)
 		{
-			Console.Write (LibCGI.Cgi.Header);
+			Console.Write (Majorsilence.LibCGI.Cgi.Header);
 
 			try {
-				var cgi = new LibCGI.Cgi ();
+				var cgi = new Majorsilence.LibCGI.Cgi ();
 				Console.WriteLine ("AuthType: " + cgi.AuthType + "<br>");
 				Console.WriteLine ("ContentLength: " + cgi.ContentLength + "<br>");
 				Console.WriteLine ("ContentType: " + cgi.ContentType + "<br>");

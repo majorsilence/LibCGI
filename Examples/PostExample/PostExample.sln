@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostExample", "PostExample\PostExample.csproj", "{65EC0C7A-0F08-418B-80EA-790651FEB263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibCGI", "..\..\LibCGI\LibCGI.csproj", "{72574258-0A8E-461A-9291-45682242F7FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Majorsilence.LibCGI", "..\..\Majorsilence.LibCGI\Majorsilence.LibCGI.csproj", "{72574258-0A8E-461A-9291-45682242F7FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
